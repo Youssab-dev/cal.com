@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calc{
+            position: relative;
+            width: 500px;
+            height: 700px;
+            box-shadow: 4px 4px 30px #333;
+            border-radius: 12px;
+            background-color: #222;
+            overflow: hidden;
+        }
+        form input{
+            pointer-events: none;
+            box-sizing: border-box;
+            text-align: right;
+            width: 100%;
+            height: 240px;
+            border: none;
+            border-radius: 12px;
+            font-size: 3rem;
+            padding: 1rem;
+            color: #fff;
+            background-color: #000;
+        }
+        .buttons{
+            position: absolute;
+            top: 45%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        button{
+            flex: 0 0 22%;
+            margin: 5px 0px;
+            width: 60px;
+            height: 52px;
+            font-size: 22px;
+            font-weight: 600;
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-yellow{
+            background-color: orange;
+            color: #f1f1f1;
+        }
+        .btn-grey{
+            background-color: rgb(224, 224, 244);
+        }
+        .btn-equal{
+            background-color:green;
+        }
+        .btn-clear{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <section class="calc">
+        <form action="">
+            <input type="text" class="screen">
+        </form>
+        <div class="buttons">
+            <button type="button" class="btn btn-yellow" data-num="*">X</button>
+            <button type="button" class="btn btn-yellow" data-num="/">/</button>
+            <button type="button" class="btn btn-yellow" data-num="-">-</button>
+            <button type="button" class="btn btn-yellow" data-num="+">+</button>
+            <button type="button" class="btn btn-grey" data-num="9">9</button>
+            <button type="button" class="btn btn-grey" data-num="8">8</button>
+            <button type="button" class="btn btn-grey" data-num="7">7</button>
+            <button type="button" class="btn btn-grey" data-num="6">6</button>
+            <button type="button" class="btn btn-grey" data-num="5">5</button>
+            <button type="button" class="btn btn-grey" data-num="4">4</button>
+            <button type="button" class="btn btn-grey" data-num="3">3</button>
+            <button type="button" class="btn btn-grey" data-num="2">2</button>
+            <button type="button" class="btn btn-grey" data-num="1">1</button>
+            <button type="button" class="btn btn-grey" data-num=".">.</button>
+            <button type="button" class=" btn-equal">=</button>
+            <button type="button" class=" btn-clear">C</button>
+        </div>
+    </section>
+    <script>
+            let screen = document.querySelector('.screen');
+            let buttons = document.querySelectorAll('.btn');
+            let clear = document.querySelector('.btn-clear');
+            let equall = document.querySelector('.btn-equal');
+            buttons.forEach(function(button){
+                button.addEventListener("click",function(event){
+                    let valuee = event.target.dataset.num;
+                    screen.value += valuee;
+                })
+            })
+            equall.addEventListener("click",function(event){
+                if(screen.value === ""){
+                    screen.value = "";
+                }else{
+                    let anss = eval(screen.value);
+                    screen.value = anss;
+                }
+            })
+            clear.addEventListener("click",function(event){
+                if(screen.value === ""){
+                    screen.value = "";
+                }else{
+                    screen.value = "";
+                }
+            })
+    </script>
+</body>
+</html>
